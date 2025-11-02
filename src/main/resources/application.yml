@@ -1,0 +1,36 @@
+spring:
+  application:
+    name: transaction-service
+  
+  r2dbc:
+    url: r2dbc:postgresql://localhost:5432/transactions
+    username: admin
+    password: admin123
+  
+  flyway:
+    enabled: true
+    url: jdbc:postgresql://localhost:5432/transactions
+    user: admin
+    password: admin123
+    locations: classpath:db/migration
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,prometheus,metrics,info
+  endpoint:
+    health:
+      show-details: always
+  observations:
+    key-values:
+      application: ${spring.application.name}
+logging:
+  level:
+    com.benas: DEBUG
+    org.springframework.r2dbc: DEBUG
+  pattern:
+    console: "%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n"
+
+server:
+  port: 8080
