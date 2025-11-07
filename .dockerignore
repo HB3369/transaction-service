@@ -1,0 +1,13 @@
+# No copiar estos archivos al build context de Docker
+target/
+.mvn/
+*.iml
+.idea/
+.vscode/
+.git/
+*.log
+*.md
+.gitignore
+Dockerfile
+docker-compose.yml
+scripts/
